@@ -1,0 +1,16 @@
+Example:
+Run script:
+python convert.py -d dictionary.txt -n 1.800.1222.222
+Output:
+Possible words for digit string 1
+1abc
+Possible words for digit string 2
+abc
+
+
+cat dictionary.txt 
+1abc
+call
+abc
+wow
+hi
