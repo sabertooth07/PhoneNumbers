@@ -3,15 +3,16 @@ import re
 
 # Dictionary to represent number to alphabet mapping
 number_to_alpha_dict={
+	'0': ['0'],
 	'1': ['1'],
-	'2': ['a', 'b', 'c'],
-	'3': ['d', 'e', 'f'],
-	'4': ['g', 'h', 'i'],
-	'5': ['j', 'k', 'l'],
-	'6': ['m', 'n', 'o'],
-	'7': ['p', 'q', 'r', 's'],
-	'8': ['t', 'u', 'v'],
-	'9': ['w', 'x', 'y', 'z']
+	'2': ['2', 'a', 'b', 'c'],
+	'3': ['3', 'd', 'e', 'f'],
+	'4': ['4', 'g', 'h', 'i'],
+	'5': ['5', 'j', 'k', 'l'],
+	'6': ['6', 'm', 'n', 'o'],
+	'7': ['7', 'p', 'q', 'r', 's'],
+	'8': ['8', 't', 'u', 'v'],
+	'9': ['9', 'w', 'x', 'y', 'z']
 }
 
 # Global variable that stores all wors in a dictionary
