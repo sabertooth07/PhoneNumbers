@@ -24,8 +24,7 @@ def is_word(word)
 	Return(s): <bool>"
 
 	if $dictionary_words_list == []
-		File.foreach("dictionary.txt") do |line|
-		#File.foreach(args.d) do |line|
+		File.foreach($options[:d]) do |line|
 			$dictionary_words_list << line.chomp
 		end
 	end
@@ -56,13 +55,14 @@ def rec_method(remaining, processed)
 end
 
 
-options = {}
+$options = {}
 OptionParser.new do |opts|
-	opts.banner = "Usage: example.rb [options]"
-	opts.on("-d", "input dictionary", "dictionary") do |d|
-		options[d] = d
-		puts options[d]
-	end
+	opts.on("-d dictionary") { |o| $options[:d] = o }
+	opts.on("-n number") { |o| $options[:n] = o }
 end.parse!
 
-rec_method("46246342", "")
+if $options[:d] and $options[:n]
+	rec_method($options[:n], "")
+else
+	puts "Usage: convert.rb -d 'dictionary.txt' -n '123'"
+end
