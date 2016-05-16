@@ -35,7 +35,7 @@ def is_word(word):
 		return False
 	
 
-def rec_method(remaining, processed):
+def rec_method(word_list, remaining, processed):
 	"""
 	Method recursively generates every possible word from a given number
 	Input parameter(s):
@@ -44,11 +44,14 @@ def rec_method(remaining, processed):
 	"""
 	if len(remaining) == 0:
 		if is_word(processed):
-			print processed
+			word_list.append(processed)
 	else:
 		pot_alpha_list=number_to_alpha_dict.get(remaining[0])
 		for alpha in pot_alpha_list:
-			rec_method(remaining[1:], processed+alpha)
+			rec_method(word_list, remaining[1:], processed+alpha)
+			#if word:
+			#	word_list.append(word)
+	return word_list
 
 
 parser = argparse.ArgumentParser()
@@ -64,6 +67,7 @@ if not pattern.match(number):
 	print "Please only use numbers and . eg: 1.800.123.123"
 	exit(1)
 
+"""
 # Skip first 6 digits if number start with 1.800
 if number.startswith("1.800."):
 	number=number[6:]
@@ -71,3 +75,27 @@ if number.startswith("1.800."):
 for counter,num in enumerate(number.split(".")):
 	print "Possible words for digit string "+str(counter+1)
 	rec_method(num, "")
+"""
+
+
+for counter,pivot in enumerate(number):
+	left=number[:int(counter)]
+	right=number[int(counter):]
+
+	word_list=[]
+	print rec_method(word_list,left,"")
+
+	word_list=[]
+	print rec_method(word_list,right,"")
+
+	left=number[:int(counter-1)]
+	right=number[int(counter+1):]
+
+	word_list=[]
+	print rec_method(word_list, left, "")
+
+	print number[counter]
+
+	word_list=[]
+	print rec_method(word_list,right,"")
+	print "---"
